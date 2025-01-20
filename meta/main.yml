@@ -1,0 +1,45 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: system_update
+  author: drkhsh
+  description: Universal system update role.
+  company: "ESCPE"
+  license: "license (BSD, MIT)"
+  min_ansible_version: "7.7.0"
+  platforms:
+    - name: Fedora
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+    - name: Devuan
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+    - name: ArchLinux
+      versions:
+        - all
+    - name: opensuse
+      versions:
+        - all
+    - name: Gentoo
+      versions:
+        - all
+    - name: FreeBSD
+      versions:
+        - all
+    - name: OpenBSD
+      versions:
+        - all
+  galaxy_tags:
+    - system
+    - update
+    - linux
+    - bsd
+    - patch
+    - packages

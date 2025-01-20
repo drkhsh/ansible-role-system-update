@@ -1,0 +1,11 @@
+---
+- name: Sync repositories and update world
+  when: ansible_distribution == "Gentoo"
+  community.general.portage:
+    package: '@world'
+    update: true
+    deep: true
+    sync: true
+    changed_use: true
+    getbinpkg: true
+    newuse: true

@@ -1,0 +1,13 @@
+---
+- name: "Openbsd: syspatch"
+  when: ansible_distribution == "OpenBSD"
+  become_method: community.general.doas
+  community.general.syspatch:
+  register: syspatch
+
+- name: "Openbsd: update packages"
+  when: ansible_distribution == "OpenBSD"
+  become_method: community.general.doas
+  community.general.openbsd_pkg:
+    name: '*'
+    state: latest

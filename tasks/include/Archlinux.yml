@@ -1,0 +1,6 @@
+---
+- name: "Archlinux: update all using pacman"
+  when: ansible_distribution == "Archlinux"
+  ansible.community.pacman:
+    update_cache: true
+    upgrade: true

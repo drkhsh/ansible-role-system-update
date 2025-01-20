@@ -1,0 +1,4 @@
+---
+- name: "Freebsd: pkg clean cache"
+  ansible.builtin.command: pkg clean --yes
+  changed_when: false

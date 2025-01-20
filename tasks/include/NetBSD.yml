@@ -1,0 +1,6 @@
+---
+- name: "Netbsd: update using pkgin"
+  when: ansible_distribution == 'NetBSD'
+  community.general.pkgin:
+    full_upgrade: true
+    force: true

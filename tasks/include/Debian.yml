@@ -1,0 +1,8 @@
+---
+- name: "Debian: update all using apt"
+  when: ansible_os_family == "Debian"
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+    upgrade: dist
+    autoremove: true
