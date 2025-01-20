@@ -3,6 +3,7 @@ exclude_paths:
   - .cache
   - .github
   - .forgejo
+  - tasks/include/OpenBSD.yml
 
 enable_list:
   - name[prefix]

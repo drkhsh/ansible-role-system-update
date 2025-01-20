@@ -1,5 +1,5 @@
 ---
-- name: Sync repositories and update world
+- name: "include | Gentoo | Sync repositories and update world"
   when: ansible_distribution == "Gentoo"
   community.general.portage:
     package: '@world'

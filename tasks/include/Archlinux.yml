@@ -1,5 +1,5 @@
 ---
-- name: "Archlinux: update all using pacman"
+- name: "include | Archlinux | Update all using pacman"
   when: ansible_distribution == "Archlinux"
   ansible.community.pacman:
     update_cache: true
