@@ -22,7 +22,7 @@ See full list at [defaults.yml](./defaults/main.yml)
 
 | Parameter                                 | Description                        | Default                                          |
 |-------------------------------------------|------------------------------------|--------------------------------------------------|
-|                                           |                                    |                                                  |
+| system_update_autoremove                  | Autoremove orphaned packages       | `false`                                          |
 
 ## Example playbook
 
