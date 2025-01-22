@@ -1,8 +1,8 @@
 ---
 - name: "pacman | Update cache"
-  ansible.community.pacman:
+  community.general.pacman:
     update_cache: true
 
 - name: "pacman | Update all packages"
-  ansible.community.pacman:
+  community.general.pacman:
     upgrade: true
