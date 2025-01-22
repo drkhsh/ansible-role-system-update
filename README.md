@@ -4,6 +4,7 @@ This role conveniently patches hosts and updates all packages.
 
 Following systems are supported:
 
+- Alpine Linux
 - Arch Linux
 - Debian / Ubuntu / Kali Linux
 - Fedora
