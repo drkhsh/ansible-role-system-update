@@ -1,0 +1,27 @@
+---
+- name: "apt | Update cache"
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: "{{ system_update_apt_cache_valid_time }}"
+
+- name: "apt | Upgrade packages"
+  ansible.builtin.apt:
+    upgrade: "{{ system_update_apt_upgrade_command }}"
+    cache_valid_time: "{{ system_update_apt_cache_valid_time }}"
+
+- name: "apt | Cleanup - autoremove"
+  when:
+    - system_update_cleanup
+  ansible.builtin.apt:
+    autoremove: "{{ system_update_cleanup }}"
+    purge: true
+    cache_valid_time: "{{ system_update_apt_cache_valid_time }}"
+  environment:
+    DEBIAN_FRONTEND: nointeractive
+
+- name: "apt | Cleanup - autoclean"
+  when:
+    - system_update_cleanup
+  ansible.builtin.apt:
+    autoclean: "{{ system_update_cleanup }}"
+    cache_valid_time: "{{ system_update_cleanup }}"

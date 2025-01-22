@@ -1,0 +1,9 @@
+---
+- name: "zypper | Update cache"
+  community.general.zypper:
+    update_cache: true
+
+- name: "zypper | Update packages"
+  community.general.zypper:
+    name: "*"
+    state: latest # noqa package-latest This role is to update packages.

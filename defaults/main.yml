@@ -1,2 +1,8 @@
 ---
-system_update_autoremove: false
+system_update_cleanup: false
+system_update_apt_upgrade_command: "safe"
+system_update_apt_cache_valid_time: 3600
+system_update_portage_binpkgs: false
+system_update_portage_newuse: false
+system_update_portage_changed_use: false
+system_update_openbsd_become_method: "community.general.doas"

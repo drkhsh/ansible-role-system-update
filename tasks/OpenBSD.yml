@@ -1,0 +1,22 @@
+---
+- name: "OpenBSD | Syspatch"
+  when: ansible_distribution == "OpenBSD"
+  become_method: "{{ system_update_openbsd_become_method }}"
+  community.general.syspatch:
+  register: syspatch
+
+- name: "OpenBSD | Update packages"
+  when: ansible_distribution == "OpenBSD"
+  become_method: "{{ system_update_openbsd_become_method }}"
+  community.general.openbsd_pkg:
+    name: '*'
+    state: latest
+
+- name: "OpenBSD | Cleanup - pkg_delete"
+  when:
+    - ansible_distribution == "OpenBSD"
+    - system_update_cleanup
+  become_method: "{{ system_update_openbsd_become_method }}"
+  ansible.builtin.command: pkg_delete -a
+  register: pkg_delete
+  changed_when: "pkg_delete.stdout != ''"

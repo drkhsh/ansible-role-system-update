@@ -1,0 +1,12 @@
+---
+- name: "dnf | Upgrade packages"
+  ansible.builtin.dnf:
+    name: "*"
+    state: latest # noqa package-latest This role is to update packages.
+    update_only: true # Updates but does not install additional packages.
+
+- name: "dnf | Cleanup"
+  when:
+    - system_update_cleanup
+  ansible.builtin.dnf:
+    autoremove: "{{ system_update_cleanup }}"

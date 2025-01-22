@@ -1,0 +1,22 @@
+---
+- name: "portage | Sync repositories"
+  when: ansible_distribution == "Gentoo"
+  community.general.portage:
+    sync: true
+
+- name: "portage | Update world"
+  when: ansible_distribution == "Gentoo"
+  community.general.portage:
+    package: '@world'
+    update: true
+    deep: true
+    changed_use: "{{ system_update_portage_changed_use }}"
+    getbinpkg: "{{ system_update_portage_binpkgs }}"
+    newuse: "{{ system_update_portage_newuse }}"
+
+- name: "portage | Cleanup - depclean"
+  when:
+    - 'ansible_distribution == "Gentoo"'
+    - system_update_cleanup
+  community.general.portage:
+    depclean: "{{ system_update_cleanup }}"

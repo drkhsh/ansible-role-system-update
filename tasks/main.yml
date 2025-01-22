@@ -1,9 +1,7 @@
 ---
-- name: "Update & patch os"
+- name: "Include Package Manager specific playbook"
   ansible.builtin.include_tasks: "{{ item }}"
   with_first_found:
-    - 'include/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml'
     - 'include/{{ ansible_pkg_mgr }}.yml'
     - 'include/{{ ansible_distribution }}.yml'
     - 'include/{{ ansible_os_family }}.yml'
-    - 'include/{{ ansible_os_family | replace("/", "_") | replace(" ", "_") }}.yml'

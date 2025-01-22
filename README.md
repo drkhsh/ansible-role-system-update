@@ -22,7 +22,13 @@ See full list at [defaults.yml](./defaults/main.yml)
 
 | Parameter                                 | Description                        | Default                                          |
 |-------------------------------------------|------------------------------------|--------------------------------------------------|
-| system_update_autoremove                  | Autoremove orphaned packages       | `false`                                          |
+| system_update_cleanup                     | Cleanup after upgrading            | `false`                                          |
+| system_update_apt_upgrade_command         | Apt: Upgrade type (dist/full/safe) | `safe`                                           |
+| system_update_apt_cache_valid_time        | Apt: Cache validity in seconds     | `3600`                                           |
+| system_update_portage_binpkgs             | Portage: Use binary packages       | `false`                                          |
+| system_update_portage_newuse              | Portage: New use flags             | `false`                                          |
+| system_update_portage_changed_use         | Portage: Changed use flags         | `false`                                          |
+| system_update_openbsd_become_method       | OpenBSD: Become method             | `community.general.doas`                         |
 
 ## Example playbook
 

@@ -1,6 +1,0 @@
----
-- name: "include | Suse | Update packages"
-  when: ansible_os_family == "Suse"
-  community.general.zypper:
-    name: '*'
-    state: latest

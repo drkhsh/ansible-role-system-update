@@ -1,20 +1,25 @@
 ---
-- name: "include | FreeBSD | Pkg: update repository"
+- name: "FreeBSD | Update repository"
   ansible.builtin.command: pkg update
   register: pkg_update
   when: ansible_os_family == "FreeBSD"
   changed_when: "'FreeBSD repository update completed.' in pkg_update.stdout"
 
-- name: "include | FreeBSD | Pkg: upgrade packages"
+- name: "FreeBSD | Upgrade packages"
   ansible.builtin.command: pkg upgrade --yes
   when: ansible_os_family == "FreeBSD"
   changed_when: "'Your packages are up to date' not in output.stdout"
-  notify: "Freebsd: pkg clean cache"
 
-- name: "include | FreeBSD | Freebsd-update: fetch and install" # noqa risky-shell-pipe
+- name: "FreeBSD | Freebsd-update: fetch and install" # noqa risky-shell-pipe
   ansible.builtin.shell: |
     freebsd-update --not-running-from-cron fetch | tee freebsd-update.log
     freebsd-update --not-running-from-cron install | tee freebsd-update.log
   register: output
   when: ansible_os_family == "FreeBSD"
   changed_when: "'No updates are available to install' not in output.stdout"
+
+- name: "FreeBSD | Cleanup - pkg clean"
+  when:
+    - system_update_cleanup
+  ansible.builtin.command: pkg clean --yes
+  changed_when: false

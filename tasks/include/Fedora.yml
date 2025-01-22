@@ -1,7 +1,0 @@
----
-- name: "include | Fedora | Update all using dnf"
-  when: ansible_distribution == 'Fedora'
-  ansible.builtin.dnf:
-    name: '*'
-    state: latest
-    update_only: true # Updates but does not install additional packages.
